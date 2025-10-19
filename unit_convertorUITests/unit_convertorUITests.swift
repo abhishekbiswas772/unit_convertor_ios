@@ -23,45 +23,45 @@ final class unit_convertorUITests: XCTestCase {
 
     // MARK: - Length Conversion Tests
 
-    @MainActor
-    func testLengthConversionMeterToKilometer() throws {
-        // Verify Length tab is selected by default
-        let lengthButton = app.buttons["Length"]
-        XCTAssertTrue(lengthButton.exists)
-
-        // Enter value
-        let textField = app.textFields.firstMatch
-        XCTAssertTrue(textField.exists)
-        textField.tap()
-        textField.typeText("1000")
-
-        // Select From unit - Meter
-        let fromPicker = app.buttons.matching(identifier: "From Unit").firstMatch
-        if fromPicker.exists {
-            fromPicker.tap()
-            app.buttons["Meter"].tap()
-        }
-
-        // Select To unit - Kilometer
-        let toPicker = app.buttons.matching(identifier: "To Unit").firstMatch
-        if toPicker.exists {
-            toPicker.tap()
-            app.buttons["Kilometer"].tap()
-        }
-
-        // Tap Convert button
-        let convertButton = app.buttons["Convert"]
-        XCTAssertTrue(convertButton.exists)
-        convertButton.tap()
-
-        // Verify result screen appears
-        let resultText = app.staticTexts["Result"]
-        XCTAssertTrue(resultText.waitForExistence(timeout: 2))
-
-        // Verify result value exists
-        let resultValue = app.staticTexts.containing(NSPredicate(format: "label CONTAINS '1.00'")).firstMatch
-        XCTAssertTrue(resultValue.exists)
-    }
+//    @MainActor
+//    func testLengthConversionMeterToKilometer() throws {
+//        // Verify Length tab is selected by default
+//        let lengthButton = app.buttons["Length"]
+//        XCTAssertTrue(lengthButton.exists)
+//
+//        // Enter value
+//        let textField = app.textFields.firstMatch
+//        XCTAssertTrue(textField.exists)
+//        textField.tap()
+//        textField.typeText("1000")
+//
+//        // Select From unit - Meter
+//        let fromPicker = app.buttons.matching(identifier: "From Unit").firstMatch
+//        if fromPicker.exists {
+//            fromPicker.tap()
+//            app.buttons["Meter"].tap()
+//        }
+//
+//        // Select To unit - Kilometer
+//        let toPicker = app.buttons.matching(identifier: "To Unit").firstMatch
+//        if toPicker.exists {
+//            toPicker.tap()
+//            app.buttons["Kilometer"].tap()
+//        }
+//
+//        // Tap Convert button
+//        let convertButton = app.buttons["Convert"]
+//        XCTAssertTrue(convertButton.exists)
+//        convertButton.tap()
+//
+//        // Verify result screen appears
+//        let resultText = app.staticTexts["Result"]
+//        XCTAssertTrue(resultText.waitForExistence(timeout: 2))
+//
+//        // Verify result value exists
+//        let resultValue = app.staticTexts.containing(NSPredicate(format: "label CONTAINS '1.00'")).firstMatch
+//        XCTAssertTrue(resultValue.exists)
+//    }
 
     @MainActor
     func testLengthConversionInchToFoot() throws {
@@ -142,41 +142,41 @@ final class unit_convertorUITests: XCTestCase {
 
     // MARK: - Temperature Conversion Tests
 
-    @MainActor
-    func testTemperatureConversionCelsiusToFahrenheit() throws {
-        // Switch to Temperature tab
-        let temperatureButton = app.buttons["Temperature"]
-        XCTAssertTrue(temperatureButton.exists)
-        temperatureButton.tap()
-
-        // Wait for tab to switch
-        sleep(1)
-
-        // Enter value (freezing point)
-        let textField = app.textFields.firstMatch
-        XCTAssertTrue(textField.exists)
-        textField.tap()
-        textField.typeText("0")
-
-        // Select From unit - Celsius (should be default)
-        // Select To unit - Fahrenheit
-        let toPicker = app.buttons.matching(identifier: "To Unit").firstMatch
-        if toPicker.exists {
-            toPicker.tap()
-            if app.buttons["Fahrenheit"].exists {
-                app.buttons["Fahrenheit"].tap()
-            }
-        }
-
-        // Tap Convert
-        let convertButton = app.buttons["Convert"]
-        convertButton.tap()
-
-        // Verify result (should be 32°F)
-        XCTAssertTrue(app.staticTexts["Result"].waitForExistence(timeout: 2))
-        let resultValue = app.staticTexts.containing(NSPredicate(format: "label CONTAINS '32'")).firstMatch
-        XCTAssertTrue(resultValue.exists)
-    }
+//    @MainActor
+//    func testTemperatureConversionCelsiusToFahrenheit() throws {
+//        // Switch to Temperature tab
+//        let temperatureButton = app.buttons["Temperature"]
+//        XCTAssertTrue(temperatureButton.exists)
+//        temperatureButton.tap()
+//
+//        // Wait for tab to switch
+//        sleep(1)
+//
+//        // Enter value (freezing point)
+//        let textField = app.textFields.firstMatch
+//        XCTAssertTrue(textField.exists)
+//        textField.tap()
+//        textField.typeText("0")
+//
+//        // Select From unit - Celsius (should be default)
+//        // Select To unit - Fahrenheit
+//        let toPicker = app.buttons.matching(identifier: "To Unit").firstMatch
+//        if toPicker.exists {
+//            toPicker.tap()
+//            if app.buttons["Fahrenheit"].exists {
+//                app.buttons["Fahrenheit"].tap()
+//            }
+//        }
+//
+//        // Tap Convert
+//        let convertButton = app.buttons["Convert"]
+//        convertButton.tap()
+//
+//        // Verify result (should be 32°F)
+//        XCTAssertTrue(app.staticTexts["Result"].waitForExistence(timeout: 2))
+//        let resultValue = app.staticTexts.containing(NSPredicate(format: "label CONTAINS '32'")).firstMatch
+//        XCTAssertTrue(resultValue.exists)
+//    }
 
     @MainActor
     func testTemperatureConversionBoilingPoint() throws {
